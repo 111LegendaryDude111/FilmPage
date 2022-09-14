@@ -53,7 +53,7 @@ promoBg.style.backgroundImage = "url('img/bg.jpg')";
 3) При клике на мусорную корзину - элемент будет удаляться из списка (сложно)
 4) Если в форме стоит галочка "Сделать любимым" - в консоль вывести сообщение: 
 "Добавляем любимый фильм"
-5) Фильмы должны быть отсортированы по алфавиту
+
 */
 /*
 1) Реализовать функционал, что после заполнения формы и нажатия кнопки "Подтвердить" - 
@@ -63,7 +63,9 @@ promoBg.style.backgroundImage = "url('img/bg.jpg')";
 P.S. Здесь есть несколько вариантов решения задачи, принимается любой, но рабочий.
 2) Если название фильма больше, чем 21 символ - обрезать его и добавить три точки
 
-
+4) Если в форме стоит галочка "Сделать любимым" - в консоль вывести сообщение: 
+"Добавляем любимый фильм"
+5) Фильмы должны быть отсортированы по алфавиту
 */
 
 const confButton = document.querySelector('.add button');
@@ -89,7 +91,15 @@ function confirm(){
 }
 confButton.addEventListener('click', confirm);
 
-
+let checkbox = document.querySelectorAll('.add input')[1];
+function addToFavourite(){
+    // console.log(checkbox);
+    if (checkbox.checked){
+        console.log('Добавляем любимый фильм');
+    }
+}
+addToFavourite();
+checkbox.addEventListener('click', addToFavourite);
 console.log(movieDB);
 
 
