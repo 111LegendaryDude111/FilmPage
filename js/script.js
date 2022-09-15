@@ -22,7 +22,9 @@ const movieDB = {
 
 
 function addFilmsOnPage(){
-    const newListFilms = document.querySelectorAll('.promo__interactive-list li');
+    // const newListFilms = document.querySelectorAll('.promo__interactive-list li');
+    const newListFilms = document.querySelectorAll('.promo__interactive-item');
+
     let movies = movieDB.movies.sort();
         for (let i = 0; i < movies.length; i++){
             if (movies[i].length > 21){
@@ -32,7 +34,24 @@ function addFilmsOnPage(){
             }
            
         }
+        newListFilms.forEach(el => {
+            el.innerHTML += '<div class = "delete"></div>';
+        });
+        let deleteF = document.querySelectorAll('.delete');
+        deleteF.forEach(el => {//доавбялем всем дивам с классом delete кнопку отслеживания
+            el.addEventListener('click',deleteee);
+        });
+
+    function deleteee (e){
+            let bucket = e.target;//указывает на каком элементе было совершено событие
+            let parentBucket = bucket.parentNode;//получаем доступ к родительскому элементу
+                parentBucket.remove(); //удаляем родительский элемент
     }
+
+
+    }
+
+
 addFilmsOnPage();
 
 function advertising(){
@@ -49,12 +68,7 @@ genre.textContent = 'драма';
 const promoBg  = document.querySelector('.promo__bg');
 promoBg.style.backgroundImage = "url('img/bg.jpg')";
 
-/*2) 
-3) При клике на мусорную корзину - элемент будет удаляться из списка (сложно)
-4) Если в форме стоит галочка "Сделать любимым" - в консоль вывести сообщение: 
-"Добавляем любимый фильм"
 
-*/
 /*
 1) Реализовать функционал, что после заполнения формы и нажатия кнопки "Подтвердить" - 
 новый фильм добавляется в список. Страница не должна перезагружаться.
@@ -62,6 +76,8 @@ promoBg.style.backgroundImage = "url('img/bg.jpg')";
 Для получения доступа к значению input - обращаемся к нему как input.value;
 P.S. Здесь есть несколько вариантов решения задачи, принимается любой, но рабочий.
 2) Если название фильма больше, чем 21 символ - обрезать его и добавить три точки
+
+3) При клике на мусорную корзину - элемент будет удаляться из списка (сложно)
 
 4) Если в форме стоит галочка "Сделать любимым" - в консоль вывести сообщение: 
 "Добавляем любимый фильм"
